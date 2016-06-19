@@ -28,10 +28,10 @@ if (!in_iframe()) {
     var p = [
         1,
         1,
-        3,
-        3,
         2,
-        2,
+        4,
+        1,
+        3,
     ];
     var imgurl = [
         GM_getResourceURL("imgfile0"),
@@ -67,7 +67,11 @@ if (!in_iframe()) {
         "font-family: '隶书'",
         "font-family: '隶书'",
     ];
-    var r = Math.random();
+    
+    var ra = new Uint32Array(2);
+    window.crypto.getRandomValues(ra);
+    var r = (ra[0] + ra[1] * Math.pow(2, 32)) / Math.pow(2, 64);
+    
     var s;
     var id;
     s = 0;
